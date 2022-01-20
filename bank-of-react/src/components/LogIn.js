@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 
-function LogIn () {
+function LogIn (props) {
 
     const [state, setState] = React.useState ({
                                             user: {
@@ -12,22 +12,22 @@ function LogIn () {
                                         })
 
   function handleChange (e) {
-    const updatedUser = {...this.state.user}
+    const updatedUser = {...state.user}
     const inputField = e.target.name
     const inputValue = e.target.value
     updatedUser[inputField] = inputValue
-
-    this.setState({user: updatedUser})
+    console.log(inputField)
+    setState({user: updatedUser})
   }
 
   function handleSubmit (e) {
     e.preventDefault()
-    this.props.mockLogIn(this.state.user)
-    this.setState({redirect: true})
+    props.mockLogIn(state.user)
+    setState({redirect: true})
   }
 
   if (state.redirect) {
-    return (<Navigate to="/userProfile"/>)
+    return(<Navigate to="/userProfile"/>)
   }
 
     return (
