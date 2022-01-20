@@ -20,7 +20,13 @@ function App () {
         const newUser = {...state.currentUser}
         newUser.userName = logInInfo.userName
         setState({currentUser: newUser})
-      }
+    }
+
+    //
+    function handleChange(amount){
+        const balance = Number(state.accountBalance)+Number(amount)
+        setState({...state, accountBalance:balance})
+    }
 
 
     return (
@@ -29,7 +35,7 @@ function App () {
                 <Route exact path="/" element={<Home accountBalance={state.accountBalance}/>}/>
                 <Route exact path="/userProfile" element={<UserProfile currentUser={state.currentUser}  />}/>
                 <Route exact path="/login" element={<LogIn user={state.currentUser} mockLogIn={mockLogIn} />}/>
-                <Route exact path="/Debits" element={<Debits />}/>
+                <Route exact path="/Debits" element={<Debits accountBalance={state.accountBalance} onChange={handleChange}/>}/>
             </Routes>
         </Router>
     );

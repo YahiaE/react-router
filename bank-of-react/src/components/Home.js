@@ -10,6 +10,8 @@ function Home(props) {
           <h1>Bank of React</h1>
           
           <Link to="/userProfile">User Profile</Link>
+          <br />
+          <Link to="/Debits">Debits</Link>
 
           <AccountBalance accountBalance={props.accountBalance}/>
         </div>
