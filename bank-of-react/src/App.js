@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes ,Route, Outlet} from 'react-router-dom';
 import Home from "./components/Home"
 import UserProfile from "./components/UserProfile"
 import LogIn from "./components/LogIn"
+import Debits from './components/Debits';
 
 function App () {
 
@@ -16,9 +17,9 @@ function App () {
 
 
     function mockLogIn(logInInfo) {
-        const newUser = {...this.state.currentUser}
+        const newUser = {...state.currentUser}
         newUser.userName = logInInfo.userName
-        this.setState({currentUser: newUser})
+        setState({currentUser: newUser})
       }
 
 
@@ -28,6 +29,7 @@ function App () {
                 <Route exact path="/" element={<Home accountBalance={state.accountBalance}/>}/>
                 <Route exact path="/userProfile" element={<UserProfile currentUser={state.currentUser}  />}/>
                 <Route exact path="/login" element={<LogIn user={state.currentUser} mockLogIn={mockLogIn} />}/>
+                <Route exact path="/Debits" element={<Debits />}/>
             </Routes>
         </Router>
     );
