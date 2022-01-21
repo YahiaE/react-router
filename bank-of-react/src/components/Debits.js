@@ -26,7 +26,7 @@ function Debits(props){
         e.preventDefault()
         if (newInfo.description&&newInfo.amount&&newInfo.date){
             setDebit([...debit, newInfo])
-            props.onChange(newInfo.amount) //send back the amount enter to parent(App)
+            props.onChange("-" + newInfo.amount) //send back the amount enter to parent(App)
         }
     }
 
