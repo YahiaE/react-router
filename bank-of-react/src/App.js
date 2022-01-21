@@ -4,6 +4,7 @@ import Home from "./components/Home"
 import UserProfile from "./components/UserProfile"
 import LogIn from "./components/LogIn"
 import Debits from './components/Debits';
+import Credits from './components/Credits';
 
 function App () {
 
@@ -22,7 +23,7 @@ function App () {
         setState({currentUser: newUser})
     }
 
-    //
+    
     function handleChange(amount){
         const balance = Number(state.accountBalance)+Number(amount)
         setState({...state, accountBalance:balance})
@@ -36,6 +37,7 @@ function App () {
                 <Route exact path="/userProfile" element={<UserProfile currentUser={state.currentUser}  />}/>
                 <Route exact path="/login" element={<LogIn user={state.currentUser} mockLogIn={mockLogIn} />}/>
                 <Route exact path="/Debits" element={<Debits accountBalance={state.accountBalance} onChange={handleChange}/>}/>
+                <Route exact path="/Credits" element={<Credits accountBalance={state.accountBalance} onChange={handleChange}/>}/>
             </Routes>
         </Router>
     );

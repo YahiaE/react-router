@@ -2,12 +2,12 @@ li{
     list-style: none;
 }
 
-.debit{
+.debit, .credit{
     text-align: center;
     padding: 20px;
 }
 
-.debits{
+.debits, .credits{
     display: flex;
     flex-direction: column;
     gap:5px;
