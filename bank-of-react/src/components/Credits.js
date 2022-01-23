@@ -50,7 +50,7 @@ function Credits(props){
             {!props.login && <Navigate to="/" />}
             { props.login &&
             <>
-                <Link className='links' to="/react-router">Home</Link>
+                <Link className='links' to="/">Home</Link>
                 <h1 className='titles'>Credits</h1>
                 <div className='balance'>Balance: {props.accountBalance}</div>
                 <div className='credits'>{display}</div>
