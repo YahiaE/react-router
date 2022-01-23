@@ -19,7 +19,7 @@ function Credits(props){
             .then(res => res.json())
             .then(data => setCredit(data))
         }
-    },[])
+    },[props.login])
 
     //sort the date
     credit.sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
@@ -50,7 +50,7 @@ function Credits(props){
             {!props.login && <Navigate to="/" />}
             { props.login &&
             <>
-                <Link className='links' to="/">Home</Link>
+                <Link className='links' to="/react-router">Home</Link>
                 <h1 className='titles'>Credits</h1>
                 <div className='balance'>Balance: {props.accountBalance}</div>
                 <div className='credits'>{display}</div>

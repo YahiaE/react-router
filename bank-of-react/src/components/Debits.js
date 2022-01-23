@@ -18,7 +18,7 @@ function Debits(props){
             .then(res => res.json())
             .then(data => setDebit(data))
         }
-    },[])
+    },[props.login])
 
     //sort the date
     debit.sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
@@ -48,7 +48,7 @@ function Debits(props){
         <div>
             {!props.login && <Navigate to="/" />}
             {props.login && <>
-                <Link className='links' to="/">Home</Link>
+                <Link className='links' to="/react-router">Home</Link>
                 <h1 className='titles'>Debits</h1>
                 <div className='balance'>Balance: {props.accountBalance}</div>
                 <div className='debits'>{display}</div>

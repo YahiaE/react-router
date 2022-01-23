@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes ,Route, Outlet} from 'react-router-dom';
+import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 import Home from "./components/Home"
 import UserProfile from "./components/UserProfile"
 import LogIn from "./components/LogIn"
@@ -37,7 +37,7 @@ function App () {
         <Router>
             <h1 className='nav'>Bank of React</h1>
             <Routes>
-                <Route exact path="/" element={<Home info={state}/>}/>
+                <Route exact path="react-router/" element={<Home info={state}/>}/>
                 <Route exact path="/login" element={<LogIn user={state.currentUser} mockLogIn={mockLogIn} />}/>
                 <Route exact path="/userProfile" element={<UserProfile info={state}  />}/>
                 <Route exact path="/Debits" element={<Debits accountBalance={state.accountBalance} login={state.currentUser.login} onChange={handleChange}/>}/>

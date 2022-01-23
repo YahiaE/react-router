@@ -5,10 +5,10 @@ import { Navigate } from 'react-router-dom'
 function UserProfile(props){
     return (
       <div>
-        {!props.info.currentUser.login && <Navigate to="/"/>}
+        {!props.info.currentUser.login && <Navigate to="/react-router"/>}
           {props.info.currentUser.login && 
             <>
-              <Link className='links' to="/">Home</Link>
+              <Link className='links' to="/react-router">Home</Link>
               <h1 className='titles'>User Profile</h1>
             <div className='infos'>
               <div className='info'>Username: {props.info.currentUser.userName}</div>
