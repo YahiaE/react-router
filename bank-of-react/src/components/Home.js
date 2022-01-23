@@ -10,13 +10,12 @@ function Home(props) {
           {/* <img src="https://letstalkpayments.com/wp-content/uploads/2016/04/Bank.png" alt="bank"/> */}
           {!props.info.currentUser.login && <h3>Please <Link to="/login">login</Link></h3>}
           {props.info.currentUser.login && <>
-                                  <h1>Weclome! {props.info.currentUser.userName}</h1>
-                                  <Link to="/userProfile">User Profile</Link>
-                                  <br />
-                                  <Link to="/Debits">Debits</Link>
-                                  <br />
-                                  <Link to="/Credits">Credits</Link>
-                              
+                                  <div className='links'>
+                                    <Link to="/userProfile">User Profile</Link>
+                                    <Link to="/Debits">Debits</Link>
+                                    <Link to="/Credits">Credits</Link>
+                                  </div>
+                                  <h1 className='titles'>Weclome! {props.info.currentUser.userName}</h1>
                                   <AccountBalance accountBalance={props.info.accountBalance}/>
                                 </>}
         </div>

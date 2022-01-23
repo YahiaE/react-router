@@ -1,16 +1,40 @@
+*{
+  margin: 0;
+}
+
 li{
     list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .debit, .credit{
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    gap:20px;
     text-align: center;
-    padding: 20px;
+    border: 1px solid black;
+    width: 50%;
+    border-radius: 50px 20px;
+    background-color: antiquewhite;
 }
 
 .debits, .credits{
+    margin-top: 20px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     gap:5px;
+}
+
+.date{
+   font-size: 20px;
+   text-decoration: underline;
+   font-weight: thin;
 }
 
 /* remove the arrow on the input field*/
@@ -23,4 +47,68 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.nav{
+  margin: 0;
+  background-color: rgb(211, 157, 148);
+  padding: 20px;
+}
+
+form{
+  display: flex;
+  gap:10px;
+  margin-top: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.input{
+  display: flex;
+  gap:10px;
+  justify-content: center;
+}
+
+input{
+  width: 150px;
+}
+
+button{
+  width: 100px;
+  margin: 0px auto;
+  margin-bottom: 20px;
+}
+
+.links{
+  display: flex;
+  gap:20px;
+  justify-content: right;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+.titles{
+  margin-top: 50px;
+  text-align: center;
+}
+
+.balance{
+  margin-top: 40px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.info{
+  font-size: 20px;
+}
+
+.infos{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 50%;
+  padding: 10px;
+  margin: 40px auto;
+  text-align: center;
+  border-radius: 10px;
 }

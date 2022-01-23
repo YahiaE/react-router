@@ -3,8 +3,8 @@ import React from 'react';
 function AccountBalance(props) {
 
     return (
-        <div>
-          Balance: {props.accountBalance}
+        <div className='balance'>
+          Your account balance: {props.accountBalance}
         </div>
     );
     

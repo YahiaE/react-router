@@ -35,7 +35,7 @@ function App () {
 
     return (
         <Router>
-            <h1>Bank of React</h1>
+            <h1 className='nav'>Bank of React</h1>
             <Routes>
                 <Route exact path="/" element={<Home info={state}/>}/>
                 <Route exact path="/login" element={<LogIn user={state.currentUser} mockLogIn={mockLogIn} />}/>

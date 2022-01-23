@@ -8,12 +8,12 @@ function UserProfile(props){
         {!props.info.currentUser.login && <Navigate to="/"/>}
           {props.info.currentUser.login && 
             <>
-              <h1>User Profile</h1>
-
-              <div>Username: {props.info.currentUser.userName}</div>
-              <div>Member Since: {props.info.currentUser.memberSince}</div>
-
-              <Link to="/">Home</Link>
+              <Link className='links' to="/">Home</Link>
+              <h1 className='titles'>User Profile</h1>
+            <div className='infos'>
+              <div className='info'>Username: {props.info.currentUser.userName}</div>
+              <div className='info'>Member Since: {props.info.currentUser.memberSince}</div>
+            </div>
           </>
          }
       </div>

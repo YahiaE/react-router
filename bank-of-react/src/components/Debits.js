@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 function Debits(props){
 
@@ -21,7 +22,7 @@ function Debits(props){
 
     //sort the date
     debit.sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
-    const display = debit.map((d,index) => <div key={index} className='debit'><li>{new Date(d.date).toLocaleDateString()}</li><li>{d.description}</li><li>{d.amount}</li></div>)
+    const display = debit.map((d,index) => <div key={index} className='debit'><li className='date'>{new Date(d.date).toLocaleDateString()}</li><li>{d.description}</li><li>{d.amount}</li></div>)
 
     //listen for submit
     function handleSubmit(e){
@@ -47,20 +48,21 @@ function Debits(props){
         <div>
             {!props.login && <Navigate to="/" />}
             {props.login && <>
-                <h1>Debits</h1>
-                <div>Balance: {props.accountBalance}</div>
+                <Link className='links' to="/">Home</Link>
+                <h1 className='titles'>Debits</h1>
+                <div className='balance'>Balance: {props.accountBalance}</div>
+                <div className='debits'>{display}</div>
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className='input'>
                         <label htmlFor="description">Description</label>
                         <input type="text" name="description" onChange={descriptionChange} />
                     </div>
-                    <div>
+                    <div className='input'>
                         <label htmlFor="amount">Amount</label>
                         <input type="number" name="amount" onChange={amountChange} />
                     </div>
-                <button>Add Debit</button>
+                    <button>Add Debit</button>
                 </form>
-                <div className='debits'>{display}</div>
             </>}
         </div>
     );
