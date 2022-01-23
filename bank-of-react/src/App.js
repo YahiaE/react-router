@@ -13,6 +13,7 @@ function App () {
         currentUser: {
             userName: 'bob_loblaw',
             memberSince: '08/23/99',
+            login:false
         }
     })
 
@@ -20,7 +21,9 @@ function App () {
     function mockLogIn(logInInfo) {
         const newUser = {...state.currentUser}
         newUser.userName = logInInfo.userName
-        setState({currentUser: newUser})
+        newUser.memberSince = new Date().toISOString().slice(0,10)
+        newUser.login = true
+        setState({...state,currentUser: newUser})
     }
 
     
@@ -32,12 +35,13 @@ function App () {
 
     return (
         <Router>
+            <h1>Bank of React</h1>
             <Routes>
-                <Route exact path="/" element={<Home accountBalance={state.accountBalance}/>}/>
-                <Route exact path="/userProfile" element={<UserProfile currentUser={state.currentUser}  />}/>
+                <Route exact path="/" element={<Home info={state}/>}/>
                 <Route exact path="/login" element={<LogIn user={state.currentUser} mockLogIn={mockLogIn} />}/>
-                <Route exact path="/Debits" element={<Debits accountBalance={state.accountBalance} onChange={handleChange}/>}/>
-                <Route exact path="/Credits" element={<Credits accountBalance={state.accountBalance} onChange={handleChange}/>}/>
+                <Route exact path="/userProfile" element={<UserProfile info={state}  />}/>
+                <Route exact path="/Debits" element={<Debits accountBalance={state.accountBalance} login={state.currentUser.login} onChange={handleChange}/>}/>
+                <Route exact path="/Credits" element={<Credits accountBalance={state.accountBalance} login={state.currentUser.login} onChange={handleChange}/>}/>
             </Routes>
         </Router>
     );

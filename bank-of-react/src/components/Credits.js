@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Navigate } from 'react-router-dom'
 
 function Credits(props){
 
@@ -13,9 +13,11 @@ function Credits(props){
                                                 }]);
     // fetches credit history when page loads
     React.useEffect(function(){
-        fetch("https://moj-api.herokuapp.com/credits")
-        .then(res => res.json())
-        .then(data => setCredit(data))
+        if (props.login){
+            fetch("https://moj-api.herokuapp.com/credits")
+            .then(res => res.json())
+            .then(data => setCredit(data))
+        }
     },[])
 
     //sort the date
@@ -44,20 +46,25 @@ function Credits(props){
 
     return (
         <div>
-            <h1>Credits</h1>
-            <div>Balance: {props.accountBalance}</div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="description">Description</label>
-                    <input type="text" name="description" onChange={descriptionChange} />
-                </div>
-                <div>
-                    <label htmlFor="amount">Amount</label>
-                    <input type="number" name="amount" onChange={amountChange} />
-                 </div>
-            <button>Add Credit</button>
-            </form>
-            <div className='credits'>{display}</div>
+            {!props.login && <Navigate to="/" />}
+            { props.login &&
+            <>
+                <h1>Credits</h1>
+                <div>Balance: {props.accountBalance}</div>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="description">Description</label>
+                        <input type="text" name="description" onChange={descriptionChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="amount">Amount</label>
+                        <input type="number" name="amount" onChange={amountChange} />
+                    </div>
+                <button>Add Credit</button>
+                </form>
+                <div className='credits'>{display}</div>
+            </>
+            }
         </div>
     );
         

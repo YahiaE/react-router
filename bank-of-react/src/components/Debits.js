@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Navigate } from 'react-router-dom'
 
 function Debits(props){
 
@@ -12,9 +12,11 @@ function Debits(props){
                                                 }]);
 
     React.useEffect(function(){
-        fetch("https://moj-api.herokuapp.com/debits")
-        .then(res => res.json())
-        .then(data => setDebit(data))
+        if (props.login){
+            fetch("https://moj-api.herokuapp.com/debits")
+            .then(res => res.json())
+            .then(data => setDebit(data))
+        }
     },[])
 
     //sort the date
@@ -43,20 +45,23 @@ function Debits(props){
 
     return (
         <div>
-            <h1>Debits</h1>
-            <div>Balance: {props.accountBalance}</div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="description">Description</label>
-                    <input type="text" name="description" onChange={descriptionChange} />
-                </div>
-                <div>
-                    <label htmlFor="amount">Amount</label>
-                    <input type="number" name="amount" onChange={amountChange} />
-                 </div>
-            <button>Add Debit</button>
-            </form>
-            <div className='debits'>{display}</div>
+            {!props.login && <Navigate to="/" />}
+            {props.login && <>
+                <h1>Debits</h1>
+                <div>Balance: {props.accountBalance}</div>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="description">Description</label>
+                        <input type="text" name="description" onChange={descriptionChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="amount">Amount</label>
+                        <input type="number" name="amount" onChange={amountChange} />
+                    </div>
+                <button>Add Debit</button>
+                </form>
+                <div className='debits'>{display}</div>
+            </>}
         </div>
     );
 }

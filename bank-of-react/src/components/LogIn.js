@@ -27,7 +27,7 @@ function LogIn (props) {
   }
 
   if (state.redirect) {
-    return(<Navigate to="/userProfile"/>)
+    return(<Navigate to="/"/>)
   }
 
     return (
