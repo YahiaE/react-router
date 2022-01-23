@@ -32,12 +32,12 @@ function LogIn (props) {
 
     return (
       <div>
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit} className='login'>
+          <div className='input'>
             <label htmlFor="userName">User Name</label>
             <input type="text" name="userName" onChange={handleChange} value={state.user.userName} />
           </div>
-          <div>
+          <div className='input'>
             <label htmlFor="password">Password</label>
             <input type="password" name="password" />
           </div>

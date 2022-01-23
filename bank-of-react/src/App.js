@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes ,Route, Outlet} from 'react-router-dom';
+import {HashRouter as HashRouter, Routes ,Route} from 'react-router-dom';
 import Home from "./components/Home"
 import UserProfile from "./components/UserProfile"
 import LogIn from "./components/LogIn"
@@ -34,7 +34,7 @@ function App () {
 
 
     return (
-        <Router>
+        <HashRouter>
             <h1 className='nav'>Bank of React</h1>
             <Routes>
                 <Route exact path="/" element={<Home info={state}/>}/>
@@ -43,7 +43,7 @@ function App () {
                 <Route exact path="/Debits" element={<Debits accountBalance={state.accountBalance} login={state.currentUser.login} onChange={handleChange}/>}/>
                 <Route exact path="/Credits" element={<Credits accountBalance={state.accountBalance} login={state.currentUser.login} onChange={handleChange}/>}/>
             </Routes>
-        </Router>
+        </HashRouter>
     );
 
 }

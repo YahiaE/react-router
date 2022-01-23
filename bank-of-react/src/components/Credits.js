@@ -19,7 +19,7 @@ function Credits(props){
             .then(res => res.json())
             .then(data => setCredit(data))
         }
-    },[])
+    },[props.login])
 
     //sort the date
     credit.sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();

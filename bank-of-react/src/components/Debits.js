@@ -18,7 +18,7 @@ function Debits(props){
             .then(res => res.json())
             .then(data => setDebit(data))
         }
-    },[])
+    },[props.login])
 
     //sort the date
     debit.sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
